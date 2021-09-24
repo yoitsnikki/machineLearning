@@ -9,3 +9,9 @@ linregression.py - main, one line code
 regressionP2.py - 3d code
 
 quadratic.py - variable full code that adjusts the line based on the curve, which can now have polynomials
+
+### Unit 2 - Classification
+
+decisionTree.py - main iris data code
+
+naiveBayes.py - classification code around wording and grouping instead of characteristics
