@@ -15,3 +15,9 @@ quadratic.py - variable full code that adjusts the line based on the curve, whic
 decisionTree.py - main iris data code
 
 naiveBayes.py - classification code around wording and grouping instead of characteristics
+
+### Unit 3 - Validation
+
+naiveBayes.py - validation on top of my classification code to see how accurate the program is
+
+validation.py - a separate validation program for my original linear regression code (quadratic.py) and how accurate it is 
