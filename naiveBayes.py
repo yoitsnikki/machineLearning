@@ -6,7 +6,11 @@ Naive Bayes Data Analysis
 
 Resources
 https://scikit-learn.org/0.19/datasets/twenty_newsgroups.html
+https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5
+https://www.tutorialspoint.com/python/list_max.htm
 
+this program takes in different inputs and sorts them into different newsgroups, and then outputs what
+it has been sorted into + the probability of it being accurate based on its parameters
 '''
 
 from sklearn.datasets import fetch_20newsgroups # the 20 newgroups set is included in scikit-learn
@@ -15,6 +19,9 @@ from sklearn.naive_bayes import MultinomialNB # we need this for our Naive Bayes
 # These next two are about processing the data. We'll look into this more later in the semester.
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
+
+#for the validation coding
+import numpy as np
 
 # which newsgroups we want to download --> I added a lot more newsgroups so it would be more accurate
 newsgroup_names = [
@@ -97,14 +104,22 @@ probabilities = model.predict_proba(fake_term_freq)
 
 print('Predictions:')
 
-for doc, group in zip(fake_docs, predicted):
-    print('\t{0} => {1}'.format(doc, newsgroups.target_names[group]))
+#print the document, the category, and the AUC value/probability for classification into that category
+#AHAAHAHAHAH I'VE DONE IT
+for doc, group, probs in zip(fake_docs, predicted, probabilities):
+    prob = ['{:17.8}'.format(prob) for prob in probs]
+    print('\t{0} => {1} => {2}'.format(doc, newsgroups.target_names[group], max(prob)))
 
+
+#LOOSE CODE, THINGS I'M NOT USING
+'''
 print('Probabilities:')
 print(''.join(['{:20}'.format(name) for name in newsgroups.target_names]))
 
 for probs in probabilities:
     print(''.join(['{:17.8}'.format(prob) for prob in probs]))
+
+'''
 
 #played around to try and fix the formatting
 '''
@@ -120,7 +135,7 @@ for probs in probabilities:
     print(''.join(answer))
 '''
 
-#original code
+#ORIGINAL CODE FOR ALL PROBABILITIES + DISORGANIZATION
 '''
 predicted = model.predict(fake_term_freq)
 probabilities = model.predict_proba(fake_term_freq)
